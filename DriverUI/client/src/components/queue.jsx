@@ -1,20 +1,20 @@
 import React from 'react';
 
-class Map extends React.Component {
+class Queue extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             current: null
         }
     }
-
+    
     render () {
         return (
-            <div>
-                <h3>This is the map component</h3>
+            <div id="queue">
+              This is the queue component
             </div>
         )
     }
 }
 
-export default Map;
+export default Queue;
