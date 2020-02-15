@@ -1,9 +1,8 @@
 const path = require('path');
 
-const RestaurantDB = require('./index');
-const UserDB = require('./index');
-// const driverDB = require('./index');
-const OrderDB = require('./index');
+const { RestaurantDB } = require('./index');
+const { UserDB } = require('./index');
+const { OrderDB } = require('./index');
 
 // Data for Restaurant
 
@@ -24,8 +23,6 @@ const restaurant1 = new RestaurantDB({
   ],
   resStats: { totalMeals: 348, revenue: 5002.98, turtles: 89, YUMYUM: 200 }
 });
-
-console.log(restaurant1); 
 
 const restaurant2 = new RestaurantDB({
   resId: 1,
@@ -64,7 +61,6 @@ const restaurant3 = new RestaurantDB({
 });
 
 const restaurantData = [restaurant1, restaurant2, restaurant3];
-console.log(restaurantData);
 
 RestaurantDB.insertMany(
   restaurantData, (error, data) => {
@@ -95,7 +91,7 @@ UserDB.insertMany(
     if (error) {
       console.log(error);
     } else {
-      console.log('data seeded');
+      console.log('user seeded');
     }
   }
 );
@@ -138,7 +134,7 @@ OrderDB.insertMany(
     if (error) {
       console.log(error);
     } else {
-      console.log('data seeded');
+      console.log('order seeded');
     }
   }
 );

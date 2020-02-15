@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
-const db = mongoose.connection;
 
 // Open database @nomnom
 mongoose.connect('mongodb://localhost/nomnom', {useNewUrlParser: true});
 
+const db = mongoose.connection;
 // Log DB connection
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
@@ -19,7 +19,7 @@ const restaurantSchema = mongoose.Schema({
   resAddress: String,
   resLocation: [Number, Number],
   transHist: [{ meal: String, customer: String, status: String, quantity: Number }],
-  resMeals: [{ name: String, active: Boolean, quantity: Number, picture: String }],
+  resMeals: [{ name: String, active: Boolean, price: Number, quantity: Number, picture: String }],
   resStats: { totalMeals: Number, revenue: Number, turtles: Number, YUMYUM: Number }
 });
 
@@ -34,19 +34,6 @@ const userSchema = mongoose.Schema({
   userStats: { totalMealsBought: Number, moneySaved: Number, moneyDonated: Number, turtles: Number, YUMYUM: Number }
 });
 
-// // Create DRIVER schema
-// const driverSchema = mongoose.Schema({
-//   id: Number,
-//   name: String,
-//   active: Boolean,
-//   contact: {email: String, phone: String},
-//   location: [Number, Number],
-//   mealPickedUp: Boolean,
-//   mealDroppedOff: Boolean,
-//   status: String, //pickup or drop off
-//   // stats: [{ totalMealsBought: Number, moneySaved: Number, moneyDonated: Number, turtles: Number, YUMYUM: Number }]
-// });
-
 // Create ORDERS schema
 const orderSchema = mongoose.Schema({
   orderId: Number,
@@ -59,12 +46,10 @@ const orderSchema = mongoose.Schema({
 });
 
 
-const RestaurantDB = mongoose.model('restaurant', restaurantSchema);
-const UserDB = mongoose.model('user', userSchema);
-const DriverDB = mongoose.model('driver', driverSchema);
-const OrderDB = mongoose.model('order', orderSchema);
+const RestaurantDB = mongoose.model('Restaurant', restaurantSchema);
+const UserDB = mongoose.model('User', userSchema);
+const OrderDB = mongoose.model('Order', orderSchema);
 
-module.exports = RestaurantDB;
-module.exports = UserDB;
-module.exports = DriverDB;
-module.exports = OrderDB;
+module.exports.RestaurantDB = RestaurantDB;
+module.exports.UserDB = UserDB;
+module.exports.OrderDB = OrderDB;
