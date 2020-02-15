@@ -17,7 +17,7 @@ class App extends Component {
   getMeals() {
     let restaurantData = sampleRestaurantData.restaurantData;
     restaurantData.forEach(restaurant => {
-      restaurant.meals.forEach(meal => {
+      restaurant.resMeals.forEach(meal => {
         if (meal.active) {
           console.log(meal);
           this.state.meals.push(meal);
