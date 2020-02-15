@@ -25,7 +25,7 @@ const restaurant1 = new RestaurantDB({
 });
 
 const restaurant2 = new RestaurantDB({
-  resId: 1,
+  resId: 2,
   resName: 'Golden Gate Bakery',
   resActive: true,
   resContact: {email: 'GoldenGateBakery@tomtom.com', phone: '122-122-1222'},
@@ -43,7 +43,7 @@ const restaurant2 = new RestaurantDB({
 });
 
 const restaurant3 = new RestaurantDB({
-  id: 1,
+  resId: 3,
   resName: 'Fogo de Chao',
   resActive: true,
   resContact: {email: 'Fogo@tomtom.com', phone: '223-334-4444'},
@@ -101,9 +101,11 @@ const order1 = new OrderDB({
   orderId: 1,
   orderUser: 'Kevin',
   orderUserAddress: '44 Tehama Street, San Francisco CA 94105',
+  userLocation: [37.787322, -122.396509],
   orderUserContact: {email: 'kevin@tomtom.com', phone: '555-555-5555'},
   orderRestaurant: 'The Bird',
   orderRestaurantAddress: '115 Montgomery Street, San Francisco CA 94105',
+  resLocation: [37.790343, -122.402202],
   order: [{meal: 'Chicken Sandwhich', quantity: 1, price: 4.50}],
 });
 
@@ -111,9 +113,11 @@ const order2 = new OrderDB({
   orderId: 2,
   orderUser: 'Adrian',
   orderUserAddress: '535 Brannan Strett, San Francisco CA 94107',
+  userLocation: [37.783778, -122.449497],
   orderUserContact: {email: 'adrian@tomtom.com', phone: '589-456-3948'},
   orderRestaurant: 'Golden Gate Bakery',
   orderRestaurantAddress: '1029 Grant Avenue, San Francisco CA 94133',
+  resLocation: [37.796389, -122.406721],
   order: [{meal: 'Pork Bun', quantity: 4, price: 10.00}],
 });
 
@@ -121,9 +125,11 @@ const order3 = new OrderDB({
   orderId: 3,
   orderUser: 'Bryce',
   orderUserAddress: '2198 Folsom Street, San Francisco CA 94110',
+  userLocation: [37.777885, -122.454501],
   orderUserContact: {email: 'bryce@tomtom.com', phone: '678-435-9287'},
   orderRestaurant: 'Taco Bell',
   orderRestaurantAddress: '710 3rd Street, San Francisco CA 94107',
+  resLocation: [37.784736, -122.400133],
   order: [{meal: '12oz Ribeye', quantity: 2, price: 24}],
 });
 

@@ -39,9 +39,11 @@ const orderSchema = mongoose.Schema({
   orderId: Number,
   orderUser: String,
   orderUserAddress: String,
+  userLocation: [Number, Number],
   orderUserContact: {email: String, phone: String},
   orderRestaurant: String,
   orderRestaurantAddress: String,
+  resLocation: [Number, Number],
   order: [{meal: String, quantity: Number, price: Number}]
 });
 
