@@ -1,13 +1,17 @@
 import React, { Component } from "react";
+import Card from './Card.jsx';
 
-class CardList extends Component {
-  render() {
-    return (
+function CardList(props) {
+  return (
     <div>
-      Card List
+      <div><h2>YumYums:</h2></div>
+      <div>
+        {props.meals.map(meal => {
+          return <Card meal={meal} key={meal.name} />;
+        })}
+      </div>
     </div>
-    )
-  }
+  );
 }
 
 export default CardList;
