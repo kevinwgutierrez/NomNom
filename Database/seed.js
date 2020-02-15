@@ -102,32 +102,32 @@ UserDB.insertMany(
 
 // Data for Orders
 const order1 = new OrderDB({
-  id: 1,
-  user: 'Kevin',
-  userAddress: '44 Tehama Street, San Francisco CA 94105',
-  userContact: {email: 'kevin@tomtom.com', phone: '555-555-5555'},
-  restaurant: 'The Bird',
-  restaurantAddress: '115 Montgomery Street, San Francisco CA 94105',
+  orderId: 1,
+  orderUser: 'Kevin',
+  orderUserAddress: '44 Tehama Street, San Francisco CA 94105',
+  orderUserContact: {email: 'kevin@tomtom.com', phone: '555-555-5555'},
+  orderRestaurant: 'The Bird',
+  orderRestaurantAddress: '115 Montgomery Street, San Francisco CA 94105',
   order: [{meal: 'Chicken Sandwhich', quantity: 1, price: 4.50}],
 });
 
 const order2 = new OrderDB({
-  id: 2,
-  user: 'Adrian',
-  userAddress: '535 Brannan Strett, San Francisco CA 94107',
-  userContact: {email: 'adrian@tomtom.com', phone: '589-456-3948'},
-  restaurant: 'Golden Gate Bakery',
-  restaurantAddress: '1029 Grant Avenue, San Francisco CA 94133',
+  orderId: 2,
+  orderUser: 'Adrian',
+  orderUserAddress: '535 Brannan Strett, San Francisco CA 94107',
+  orderUserContact: {email: 'adrian@tomtom.com', phone: '589-456-3948'},
+  orderRestaurant: 'Golden Gate Bakery',
+  orderRestaurantAddress: '1029 Grant Avenue, San Francisco CA 94133',
   order: [{meal: 'Pork Bun', quantity: 4, price: 10.00}],
 });
 
 const order3 = new OrderDB({
-  id: 3,
-  user: 'Bryce',
-  userAddress: '2198 Folsom Street, San Francisco CA 94110',
-  userContact: {email: 'bryce@tomtom.com', phone: '678-435-9287'},
-  restaurant: 'Taco Bell',
-  restaurantAddress: '710 3rd Street, San Francisco CA 94107',
+  orderId: 3,
+  orderUser: 'Bryce',
+  orderUserAddress: '2198 Folsom Street, San Francisco CA 94110',
+  orderUserContact: {email: 'bryce@tomtom.com', phone: '678-435-9287'},
+  orderRestaurant: 'Taco Bell',
+  orderRestaurantAddress: '710 3rd Street, San Francisco CA 94107',
   order: [{meal: '12oz Ribeye', quantity: 2, price: 24}],
 });
 
