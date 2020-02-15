@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
-const db = mongoose.connection;
 
 // Open database @nomnom
 mongoose.connect('mongodb://localhost/nomnom', {useNewUrlParser: true});
 
+const db = mongoose.connection;
 // Log DB connection
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
@@ -12,58 +12,44 @@ db.once('open', function() {
 
 // Create RESTAURANT schema
 const restaurantSchema = mongoose.Schema({
-  id: Number,
-  name: String,
-  active: Boolean,
-  contact: {email: String, phone: String},
-  address: String,
-  location: [Number, Number],
+  resId: Number,
+  resName: String,
+  resActive: Boolean,
+  resContact: {email: String, phone: String},
+  resAddress: String,
+  resLocation: [Number, Number],
   transHist: [{ meal: String, customer: String, status: String, quantity: Number }],
-  meals: [{ name: String, active: Boolean, quantity: Number, picture: String }],
-  stats: { totalMeals: Number, revenue: Number, turtles: Number, YUMYUM: Number }
+  resMeals: [{ name: String, active: Boolean, price: Number, quantity: Number, picture: String }],
+  resStats: { totalMeals: Number, revenue: Number, turtles: Number, YUMYUM: Number }
 });
 
 // Create USER schema
 const userSchema = mongoose.Schema({
-  id: Number,
-  name: String,
-  active: Boolean,
-  contact: {email: String, phone: String},
-  address: String,
-  location: [Number, Number],
-  stats: { totalMealsBought: Number, moneySaved: Number, moneyDonated: Number, turtles: Number, YUMYUM: Number }
-});
-
-// Create DRIVER schema
-const driverSchema = mongoose.Schema({
-  id: Number,
-  name: String,
-  active: Boolean,
-  contact: {email: String, phone: String},
-  location: [Number, Number],
-  mealPickedUp: Boolean,
-  mealDroppedOff: Boolean,
-  status: String, //pickup or drop off
-  // stats: [{ totalMealsBought: Number, moneySaved: Number, moneyDonated: Number, turtles: Number, YUMYUM: Number }]
+  userId: Number,
+  userName: String,
+  userActive: Boolean,
+  userContact: {email: String, phone: String},
+  userAddress: String,
+  userLocation: [Number, Number],
+  userStats: { totalMealsBought: Number, moneySaved: Number, moneyDonated: Number, turtles: Number, YUMYUM: Number }
 });
 
 // Create ORDERS schema
 const orderSchema = mongoose.Schema({
-  id: Number,
-  user: String,
-  userAddress: String,
-  userContact: {email: String, phone: String},
-  restaurant: String,
-  restaurantAddress: String,
+  orderId: Number,
+  orderUser: String,
+  orderUserAddress: String,
+  orderUserContact: {email: String, phone: String},
+  orderRestaurant: String,
+  orderRestaurantAddress: String,
+  order: [{meal: String, quantity: Number, price: Number}]
 });
 
 
-const RestaurantDB = mongoose.model('restaurant', restaurantSchema);
-const UserDB = mongoose.model('user', userSchema);
-const DriverDB = mongoose.model('driver', driverSchema);
-const OrderDB = mongoose.model('order', orderSchema);
+const RestaurantDB = mongoose.model('Restaurant', restaurantSchema);
+const UserDB = mongoose.model('User', userSchema);
+const OrderDB = mongoose.model('Order', orderSchema);
 
-module.exports = RestaurantDB;
-module.exports = UserDB;
-module.exports = DriverDB;
-module.exports = OrderDB;
+module.exports.RestaurantDB = RestaurantDB;
+module.exports.UserDB = UserDB;
+module.exports.OrderDB = OrderDB;
