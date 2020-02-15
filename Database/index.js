@@ -12,49 +12,50 @@ db.once('open', function() {
 
 // Create RESTAURANT schema
 const restaurantSchema = mongoose.Schema({
-  id: Number,
-  name: String,
-  active: Boolean,
-  contact: {email: String, phone: String},
-  address: String,
-  location: [Number, Number],
+  resId: Number,
+  resName: String,
+  resActive: Boolean,
+  resContact: {email: String, phone: String},
+  resAddress: String,
+  resLocation: [Number, Number],
   transHist: [{ meal: String, customer: String, status: String, quantity: Number }],
-  meals: [{ name: String, active: Boolean, quantity: Number, picture: String }],
-  stats: { totalMeals: Number, revenue: Number, turtles: Number, YUMYUM: Number }
+  resMeals: [{ name: String, active: Boolean, quantity: Number, picture: String }],
+  resStats: { totalMeals: Number, revenue: Number, turtles: Number, YUMYUM: Number }
 });
 
 // Create USER schema
 const userSchema = mongoose.Schema({
-  id: Number,
-  name: String,
-  active: Boolean,
-  contact: {email: String, phone: String},
-  address: String,
-  location: [Number, Number],
-  stats: { totalMealsBought: Number, moneySaved: Number, moneyDonated: Number, turtles: Number, YUMYUM: Number }
+  userId: Number,
+  userName: String,
+  userActive: Boolean,
+  userContact: {email: String, phone: String},
+  userAddress: String,
+  userLocation: [Number, Number],
+  userStats: { totalMealsBought: Number, moneySaved: Number, moneyDonated: Number, turtles: Number, YUMYUM: Number }
 });
 
-// Create DRIVER schema
-const driverSchema = mongoose.Schema({
-  id: Number,
-  name: String,
-  active: Boolean,
-  contact: {email: String, phone: String},
-  location: [Number, Number],
-  mealPickedUp: Boolean,
-  mealDroppedOff: Boolean,
-  status: String, //pickup or drop off
-  // stats: [{ totalMealsBought: Number, moneySaved: Number, moneyDonated: Number, turtles: Number, YUMYUM: Number }]
-});
+// // Create DRIVER schema
+// const driverSchema = mongoose.Schema({
+//   id: Number,
+//   name: String,
+//   active: Boolean,
+//   contact: {email: String, phone: String},
+//   location: [Number, Number],
+//   mealPickedUp: Boolean,
+//   mealDroppedOff: Boolean,
+//   status: String, //pickup or drop off
+//   // stats: [{ totalMealsBought: Number, moneySaved: Number, moneyDonated: Number, turtles: Number, YUMYUM: Number }]
+// });
 
 // Create ORDERS schema
 const orderSchema = mongoose.Schema({
-  id: Number,
-  user: String,
-  userAddress: String,
-  userContact: {email: String, phone: String},
-  restaurant: String,
-  restaurantAddress: String,
+  orderId: Number,
+  orderUser: String,
+  orderUserAddress: String,
+  orderUserContact: {email: String, phone: String},
+  orderRestaurant: String,
+  orderRestaurantAddress: String,
+  order: [{meal: String, quantity: Number, price: Number}]
 });
 
 
