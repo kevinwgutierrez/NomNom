@@ -1,5 +1,6 @@
 import React from 'react';
 import Queue from './queue.jsx';
+import key from '../../../config.js';
 
 class App extends React.Component {
     constructor(props) {
@@ -12,7 +13,7 @@ class App extends React.Component {
     componentDidMount () {
       tt.setProductInfo('com.company-name.product-name', '3.0');
       const map = tt.map({
-          key: 'PcAGcI30kBAzzNfuBQTzZ0oGgnRNL7LQ',
+          key: `${key}`,
           container: 'map',
           style: 'tomtom://vector/1/basic-main',
           center: [-122.396525, 37.787415],
@@ -26,7 +27,7 @@ class App extends React.Component {
     }
 
     updateRoute() {
-      
+
     }
 
     render () {
