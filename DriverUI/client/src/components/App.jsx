@@ -1,5 +1,6 @@
 import React from 'react';
 import Orders from './Orders.jsx';
+import Pickups from './Pickups.jsx';
 import key from '../../../config.js';
 import axios from 'axios';
 
@@ -20,6 +21,12 @@ class App extends React.Component {
 
   componentDidMount () {
     tt.setProductInfo('com.company-name.product-name', '3.0');
+    const flowConfig = {
+      key: `${key}`,
+      style: 'tomtom://vector/1/relative0',
+      refresh: 30000
+    };
+    const flowTier = new tt.TrafficFlowTilesTier(flowConfig);
     const map = tt.map({
         key: `${key}`,
         container: 'map',
@@ -29,6 +36,7 @@ class App extends React.Component {
     });
     map.addControl(new tt.FullscreenControl());
     map.addControl(new tt.NavigationControl());
+    map.addTier(flowTier);
     this.setState({
       map: map
     })
@@ -108,9 +116,19 @@ class App extends React.Component {
     return (
       <div id="main">
         <button id="nextOrders" onClick={() => {
+          if (this.state.counter > 2) {
+            return;
+          }
           this.calculateRoute(this.state.current.route)
         }}>Get Next Route</button>
-        <Orders orders={this.state.orderQueue}/>
+        <div id="pickups_and_orders">
+          <div id="pickups">
+            <Pickups pickups={this.state.orderQueue}/>
+          </div>
+          <div id="orders">
+            <Orders orders={this.state.orderQueue}/>
+          </div>
+        </div>
       </div>
     )
   }

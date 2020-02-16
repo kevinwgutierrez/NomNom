@@ -3,12 +3,66 @@
     height: 60vh;
 }
 
+#main {
+    background-color: #fff;
+}
+
 body {
     text-align: center;
+    font-family: Roboto;
+    background-color: #fff;
 }
 
 #nextOrders {
     margin-top: 10px;
-    height: 25px;
-    width: 100px;
+    font-family: 'Ubuntu', sans-serif;
+    width: 170px;
+    height: 40px;
+    line-height: 1;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-radius: 3px;
+    cursor: pointer;
+    box-shadow:0 0 10px 0 rgba(0,0,0,.2);
+    background-color: #dffa46;
+}
+
+h5 {
+    border-bottom: 1px solid black;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 20px;
+}
+
+h6 {
+    padding: 15px;
+}
+
+h4 {
+    margin-bottom: 0px;
+}
+h6 {
+    margin-top: 0px;
+}
+  
+#pickups_and_orders {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#pickups {
+    display: flex;
+    order: 1;
+}
+
+#pickups_container {
+    border: 10px solid #666666;
+    border-radius: 80px 80px / 25px 25px 25px 25px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.2);
+}
+
+#orders {
+    display: flex;
+    order: 2;
 }
