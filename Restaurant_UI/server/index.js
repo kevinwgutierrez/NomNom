@@ -12,7 +12,14 @@ app.use(parser.urlencoded({extended: true}));
 
 // GET
 app.get('/restaurant', (req, res) => {
-
+  RestaurantDB.findOne({ resId: 4 }, (err, data) => {
+    if(err) {
+      console.log(err);
+      res.sendStatus(500);
+    } else {
+      res.send(data);
+    }
+  });
 });
 
 // POST
