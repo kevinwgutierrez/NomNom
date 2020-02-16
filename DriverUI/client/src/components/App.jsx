@@ -40,6 +40,73 @@ class App extends React.Component {
     this.setState({
       map: map
     })
+  //   var points = [
+  //     // low density
+  //     [-122.411445, 37.793606],
+  //     [-122.412459, 37.793354],
+  // ];
+
+  // var geoJson = {
+  //     type: 'FeatureCollection',
+  //     features: points.map(function(point) {
+  //         return {
+  //             geometry: {
+  //                 type: 'Point',
+  //                 coordinates: point
+  //             },
+  //             properties: {}
+  //         };
+  //     })
+  // };
+
+  // map.addLayer({
+  //     'id': 'heatmap',
+  //     'type': 'heatmap',
+  //     'source': {
+  //         'type': 'geojson',
+  //         'data': geoJson
+  //     },
+  //     'paint': {
+  //         'heatmap-weight': 0.6,
+  //         'heatmap-intensity': [
+  //             'interpolate',
+  //             ['linear'],
+  //             ['zoom'],
+  //             0, 1,
+  //             9, 3
+  //         ],
+  //         'heatmap-color': [
+  //             'interpolate',
+  //             ['linear'],
+  //             ['heatmap-density'],
+  //             0, 'rgba(49, 150, 251, 0)',
+  //             0.2, 'rgb(49, 150, 251)',
+  //             0.4, 'rgb(127, 234, 20)',
+  //             0.6, 'rgb(251, 251, 49)',
+  //             0.8, 'rgb(251, 150, 49)',
+  //             1, 'rgb(251, 49, 49)'
+  //         ],
+
+  //         'heatmap-radius': [
+  //             'interpolate',
+  //             ['linear'],
+  //             ['zoom'],
+  //             0, 2,
+  //             9, 20 
+  //         ],
+
+  //         'heatmap-opacity': [
+  //             'interpolate',
+  //             ['linear'],
+  //             ['zoom'],
+  //             3, 0, 
+  //             5, 0.5,
+  //             10, 1, 
+  //             18, 0.6,
+  //             20, 0.1
+  //         ]
+  //     }
+  // });
     axios.get('/driver')
       .then((response) => {
         const orders = response.data;
@@ -123,10 +190,10 @@ class App extends React.Component {
         }}>Get Next Route</button>
         <div id="pickups_and_orders">
           <div id="pickups">
-            <Pickups pickups={this.state.orderQueue}/>
+            <Pickups pickups={this.state.orderQueue} counter={this.state.counter}/>
           </div>
           <div id="orders">
-            <Orders orders={this.state.orderQueue}/>
+            <Orders orders={this.state.orderQueue} counter={this.state.counter}/>
           </div>
         </div>
       </div>

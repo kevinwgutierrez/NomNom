@@ -7,7 +7,7 @@ const Pickup = (props) => {
   } = props.order;
   return (
     <div className="Pickup-container">
-      <div className="entry">
+      <div className="entry" id={props.counter - 1 === props.item ? 'current_order' : 'none'}>
         <h4>{orderRestaurant}</h4>
         <h6>{orderRestaurantAddress}</h6>
       </div>
