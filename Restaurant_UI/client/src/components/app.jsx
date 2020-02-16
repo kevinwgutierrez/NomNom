@@ -18,17 +18,30 @@ class App extends React.Component {
     }
 
     this.fetch = this.fetch.bind(this);
+    this.toggleMeal = this.toggleMeal.bind(this);
   }
 
   fetch() {
     axios.get('/restaurant')
       .then((response) => {
         let data = response.data;
+        let meals = [];
+        let activeMeals = [];
+
+        for(let i = 0; i < data.resMeals.length; i++) {
+          if(data.resMeals[i].active) {
+            activeMeals.push(data[i]);
+          } else {
+            meals.push(data.resMeals[i]);
+          }
+        }
+
         this.setState({
             data: data,
             stats: data.resStats,
             transHist: data.transHist,
-            meals: data.resMeals
+            meals: meals,
+            activeMeals: activeMeals
         });
       })
       .catch((error) => {
@@ -36,9 +49,30 @@ class App extends React.Component {
       })
   }
 
-  // patch() {
-  //   axios.patch('/restaurant',)
-  // }
+  patch() {
+
+  }
+
+  toggleMeal(meal, index) {
+    if(meal.active === false) {
+      meal.active = true;
+      //patch request
+
+      let currActiveMeal = this.state.activeMeals
+      currActiveMeal.push(meal);
+      this.setState({
+        activeMeals: currActiveMeal
+      });
+    } else {
+      meal.active = false;
+      //patch request
+      let index = this.state.activeMeals.indexOf(meal);
+      let currDeactiveMeal = this.state.activeMeals.splice(index, 1);
+      this.setState({
+        activeMeals: currDeactiveMeal
+      });
+    }
+  }
 
   componentDidMount() {
     this.fetch();
@@ -58,7 +92,7 @@ class App extends React.Component {
           <TransHist transHist={this.state.transHist}/>
         </div>
         <div className="restaurant-meals-container">
-          <Meals meals={this.state.meals}/>
+          <Meals meals={this.state.meals} toggleMeal={this.toggleMeal}/>
         </div>
         <div className="active-meals-container">
           <ActiveMeals activeMeals={this.state.activeMeals}/>

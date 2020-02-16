@@ -2,7 +2,7 @@ import React from 'react';
 
 function Meal(props) {
   return(
-    <div className="meal-wrapper">
+    <div className="meal-wrapper" onClick={() => props.toggleMeal(props.meal)}>
       <div className="meal-name">
         Name: {props.meal.name}
       </div>
