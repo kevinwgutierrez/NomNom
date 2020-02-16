@@ -34,7 +34,7 @@ const restaurantData = [
     resStats: { totalMeals: 559, revenue: 2789.54, turtles: 76, YUMYUM: 467 }
   },
   {
-    id: 1,
+    resId: 3,
     resName: 'Fogo de Chao',
     resActive: true,
     resContact: {email: 'Fogo@tomtom.com', phone: '223-334-4444'},

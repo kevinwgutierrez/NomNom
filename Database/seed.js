@@ -122,6 +122,7 @@ const order1 = new OrderDB({
   orderRestaurantAddress: '115 Montgomery Street, San Francisco CA 94105',
   resLocation: [37.790343, -122.402202],
   order: [{meal: 'Chicken Sandwhich', quantity: 1, price: 4.50}],
+  route: '-122.402202,37.790343:-122.396509,37.787322',
 });
 
 const order2 = new OrderDB({
@@ -134,6 +135,7 @@ const order2 = new OrderDB({
   orderRestaurantAddress: '1029 Grant Avenue, San Francisco CA 94133',
   resLocation: [37.796389, -122.406721],
   order: [{meal: 'Pork Bun', quantity: 4, price: 10.00}],
+  route: '-122.406721,37.796389:-122.449497,37.783778',
 });
 
 const order3 = new OrderDB({
@@ -146,6 +148,7 @@ const order3 = new OrderDB({
   orderRestaurantAddress: '710 3rd Street, San Francisco CA 94107',
   resLocation: [37.784736, -122.400133],
   order: [{meal: '12oz Ribeye', quantity: 2, price: 24}],
+  route: '-122.400133,37.784736:-122.454501,37.777885',
 });
 
 const orderData = [order1, order2, order3];
