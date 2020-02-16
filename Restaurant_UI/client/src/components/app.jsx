@@ -66,8 +66,9 @@ class App extends React.Component {
     } else {
       meal.active = false;
       //patch request
-      let index = this.state.activeMeals.indexOf(meal);
-      let currDeactiveMeal = this.state.activeMeals.splice(index, 1);
+      // let index = this.state.activeMeals.indexOf(meal);
+      let currDeactiveMeal = this.state.activeMeals;
+      currDeactiveMeal.pop();
       this.setState({
         activeMeals: currDeactiveMeal
       });
