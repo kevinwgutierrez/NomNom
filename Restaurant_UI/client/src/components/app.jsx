@@ -1,13 +1,16 @@
 import React from 'react';
 import axios from 'axios';
-import Stats from './stats.jsx';
+import Statistics from './statistics.jsx';
 
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      current: null
+      stats: {},
+      transHist: {},
+      meals: {},
+      activeMeals: {}
     }
 
     this.fetch = this.fetch.bind(this);
@@ -16,7 +19,12 @@ class App extends React.Component {
   fetch() {
     axios.get('/restaurant')
       .then((response) => {
-        console.log(response);
+        let data = response.data;
+        this.setState({
+            stats: data.resStats,
+            transHist: data.transHist,
+            meals: data.resMeals
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -31,7 +39,7 @@ class App extends React.Component {
     return (
       <div id="main">
         <div className="stats-container">
-          <Stats />
+          <Statistics stats={this.state.stats}/>
         </div>
         <div className="trans-history-container">
 
