@@ -8,7 +8,7 @@ module.exports = {
 
     }, 
     post: (req, res) => {
-      
+
     }
   },
 
@@ -28,8 +28,8 @@ module.exports = {
     }
   },
 
-  // business: {
-  //   get: function (req, res) {},
-  //   post: function (req, res) {}
-  // }
+  restaurant: {
+    get: (req, res) => {},
+    post: (req, res) => {}
+  }
 };
