@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import CardList from './cards/CardList.jsx';
-import CheckoutModal from './cards/CheckoutModal.jsx';
-import Confirmation from './cards/Confirmation.jsx';
+import CardList from "./cards/CardList.jsx";
+import CheckoutModal from "./cards/CheckoutModal.jsx";
+import Confirmation from "./cards/Confirmation.jsx";
+import "../../styles/styles.css";
 
-import sampleRestaurantData from '../sampleRestaurantData.js';
+import sampleRestaurantData from "../sampleRestaurantData.js";
 
 class App extends Component {
   constructor(props) {
@@ -48,7 +49,7 @@ class App extends Component {
     if (!this.state.isModalOpen) {
       this.setState({
         isModalOpen: true,
-        selectedMeal: meal,
+        selectedMeal: meal
       });
     } else {
       this.setState({
@@ -73,34 +74,42 @@ class App extends Component {
     console.log(value);
     this.setState({
       quantity: value
-    })
+    });
     this.toggleModal();
     this.toggleConfirmation();
   }
 
   render() {
-    const { meals, isModalOpen, orderConfirmed, selectedMeal, quantity } = this.state;
+    const {
+      meals,
+      isModalOpen,
+      orderConfirmed,
+      selectedMeal,
+      quantity
+    } = this.state;
     return (
-      <div id="app-container">
-        {orderConfirmed ?
+      <div className="app-container">
+        <div className="nav">
+          <h2>YumYum</h2>
+        </div>
+        {orderConfirmed ? (
           <Confirmation selectedMeal={selectedMeal} quantity={quantity} />
-          :
-          <div id="food-container">
+        ) : (
+          <div className="food-container">
             <CardList meals={meals} toggleModal={this.toggleModal} />
-            {isModalOpen ?
+            {isModalOpen ? (
               <CheckoutModal
                 toggleModal={this.toggleModal}
                 isModalOpen={isModalOpen}
                 toggleConfirmation={this.toggleConfirmation}
                 orderConfirmed={orderConfirmed}
                 submitForm={this.submitForm}
-                >
-              </CheckoutModal>
-              : null}
+              ></CheckoutModal>
+            ) : null}
           </div>
-        }
+        )}
       </div>
-    )
+    );
   }
 }
 

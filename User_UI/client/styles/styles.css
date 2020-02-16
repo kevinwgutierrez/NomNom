@@ -1,0 +1,57 @@
+* {
+  font-family: helvetica;
+}
+
+body, html {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-list-container {
+  width: 100%;
+  display: flex;
+  padding: 10px;
+  flex-direction: row;
+}
+
+.card-container {
+  border: solid 1px #c9c9c9;
+  border-radius: 4px;
+  padding: 15px;
+  width: 300px;
+}
+
+.quantityRemaining {
+  font-size: 10pt;
+}
+
+button {
+  padding: 5px 15px;
+  background-color: #FFE361;
+  border: none;
+  width: 100%;
+}
+
+.price {
+  font-weight: 600;
+}
+
+img {
+  width: 300px;
+  height: 250px;
+  object-fit: cover;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.nav {
+}
