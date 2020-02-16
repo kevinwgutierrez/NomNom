@@ -9,10 +9,13 @@ class App extends React.Component {
     this.state = {
         map : {},
         orderQueue: [],
-        current: null
+        current: null,
+        markers: [],
+        counter: 0,
     }
     this.calculateRoute = this.calculateRoute.bind(this);
     this.addMarkers = this.addMarkers.bind(this);
+    this.resetMarkers = this.resetMarkers.bind(this);
   }
 
   componentDidMount () {
@@ -40,12 +43,33 @@ class App extends React.Component {
   }
 
   addMarkers (coordinates) {
+    let markers = [];
     coordinates.forEach(item => {
-      new tt.Marker().setLngLat([item[1], item[0]]).addTo(this.state.map);
+      markers.push(new tt.Marker().setLngLat([item[1], item[0]]).addTo(this.state.map));
+    })
+    this.setState({
+      markers : markers
+    })
+  }
+
+  resetMarkers () {
+    this.state.markers.forEach(marker => {
+      marker.remove();
+    })
+    this.setState({
+      markers: []
     })
   }
 
   calculateRoute (coordinates) {
+    this.resetMarkers();
+    if (this.state.map.getLayer('route')) {
+      this.state.map.removeLayer('route');
+      this.state.map.removeSource('route');
+    }
+
+    this.addMarkers([this.state.current.userLocation, this.state.current.resLocation]);
+
     tt.services.calculateRoute({
       key: `${key}`,
       traffic: false,
@@ -66,8 +90,6 @@ class App extends React.Component {
               'line-width': 8
           }
         })
-        console.log(this.state.current.userLocation);
-        this.addMarkers([this.state.current.userLocation, this.state.current.resLocation]);
 
         var bounds = new tt.LngLatBounds();
         geojson.features[0].geometry.coordinates.forEach(function(point) {
@@ -75,12 +97,19 @@ class App extends React.Component {
         });
         this.state.map.fitBounds(bounds, { duration: 0, padding: 50 });
       })
+      let newCounter = this.state.counter += 1;
+      this.setState({
+        counter: newCounter,
+        current: this.state.orderQueue[newCounter],
+      })
   }
 
   render () {
     return (
       <div id="main">
-        <button id="nextOrders" onClick={() => this.calculateRoute('-122.396509,37.787322:-122.402202,37.790343')}>Get Next Route</button>
+        <button id="nextOrders" onClick={() => {
+          this.calculateRoute(this.state.current.route)
+        }}>Get Next Route</button>
         <Orders orders={this.state.orderQueue}/>
       </div>
     )
