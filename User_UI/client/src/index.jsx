@@ -2,6 +2,6 @@ import React from "react";
 
 import ReactDOM from "react-dom";
 
-import App from "./components/App.jsx";
+import App from "./components/map/App.jsx";
 
-ReactDOM.render(<App />, document.getElementById("map"));
+ReactDOM.render(<App />, document.getElementById("app"));
