@@ -17,9 +17,9 @@ const restaurant1 = new RestaurantDB({
     { meal: 'Chicken Sandwhich', customer: 'Kevin', status: 'pickedUp', price: 4.50, quantity: 1 },
   ],
   resMeals: [
-    { name: 'Chicken Sandwhich', active: true, price: 4.50, quantity: 5, picture: 'https://www.omahasteaks.com/gifs/990x594/rb035.jpg' },
-    { name: 'Green Beans', active: false, price: 1, quantity: 0, picture: 'https://cook.fnr.sndimg.com/content/dam/images/cook/fullset/2015/9/23/0/CCPLBSP1H_Heavenly-Sauteed-String-Beans-with-Garlic_s4x3.jpg.rend.hgtvcom.616.462.suffix/1516897726695.jpeg' },
-    { name: 'Mashed Potatoes', active: false, price: 1, quantity: 0, picture: 'https://www.skinnytaste.com/wp-content/uploads/2018/01/Instant-Pot-Mashed-Potatoes-1-5.jpg' }
+    { name: 'Chicken Sandwhich', active: true, price: 4.50, quantity: 5, YUMYUM: 9, picture: 'https://www.omahasteaks.com/gifs/990x594/rb035.jpg' },
+    { name: 'Green Beans', active: false, price: 1, quantity: 0, YUMYUM: 2, picture: 'https://cook.fnr.sndimg.com/content/dam/images/cook/fullset/2015/9/23/0/CCPLBSP1H_Heavenly-Sauteed-String-Beans-with-Garlic_s4x3.jpg.rend.hgtvcom.616.462.suffix/1516897726695.jpeg' },
+    { name: 'Mashed Potatoes', active: false, price: 1, quantity: 0, YUMYUM: 2, picture: 'https://www.skinnytaste.com/wp-content/uploads/2018/01/Instant-Pot-Mashed-Potatoes-1-5.jpg' }
   ],
   resStats: { totalMeals: 348, revenue: 5002.98, turtles: 89, YUMYUM: 200 }
 });
@@ -35,9 +35,9 @@ const restaurant2 = new RestaurantDB({
     { meal: 'Pork Bun', customer: 'Adrian', status: 'pickedUp', price: 10, quantity: 4 },
   ],
   resMeals: [
-    { name: 'Pork Bun', active: true, price: 2.50, quantity: 8, picture: 'https://cdn-image.myrecipes.com/sites/default/files/styles/4_3_horizontal_-_1200x900/public/image/recipes/ck/08/05/pork-buns-ck-1734314-x.jpg?itok=n7Pis2lZ' },
-    { name: 'Pinapple Bun', active: false, price: 2.50, quantity: 0, picture: 'https://du7ybees82p4m.cloudfront.net/5767fb25d52a76.13134167.jpg?wresIdth=1820&height=1023' },
-    { name: 'Croissant', active: false, price: 3.00, quantity: 0, picture: 'https://www.seriouseats.com/recipes/images/2011/08/20110817-166611-flour-croissants.jpg' }
+    { name: 'Pork Bun', active: true, price: 2.50, quantity: 8, YUMYUM: 5, picture: 'https://cdn-image.myrecipes.com/sites/default/files/styles/4_3_horizontal_-_1200x900/public/image/recipes/ck/08/05/pork-buns-ck-1734314-x.jpg?itok=n7Pis2lZ' },
+    { name: 'Pinapple Bun', active: false, price: 2.50, quantity: 0, YUMYUM: 5, picture: 'https://du7ybees82p4m.cloudfront.net/5767fb25d52a76.13134167.jpg?wresIdth=1820&height=1023' },
+    { name: 'Croissant', active: false, price: 3.00, quantity: 0, YUMYUM: 6, picture: 'https://www.seriouseats.com/recipes/images/2011/08/20110817-166611-flour-croissants.jpg' }
   ],
   resStats: { totalMeals: 559, revenue: 2789.54, turtles: 76, YUMYUM: 467 }
 });
@@ -53,14 +53,29 @@ const restaurant3 = new RestaurantDB({
     { meal: '12oz Ribeye', customer: 'Bryce', status: 'pickedUp', price: 24, quantity: 2 },
   ],
   resMeals: [
-    { name: '12oz Ribeye', active: true, price: 12, quantity: 10, picture: 'https://www.calvettimeats.com/wp-content/uploads/2016/12/Black-Angus-Beef-Ribeye-Steak-12-oz-1024x684.jpg' },
-    { name: 'Lamb Shank', active: true, price: 10, quantity: 4, picture: 'https://www.ibreatheimhungry.com/wp-content/uploads/2019/04/IPlambshanks3.jpg' },
-    { name: '6oz Sirloin', active: false, price: 11, quantity: 0, picture: 'https://cdn.shopify.com/s/files/1/1727/0315/products/Sirloin_steak-1.jpg?v=1484941276' }
+    { name: '12oz Ribeye', active: true, price: 12, quantity: 10, YUMYUM: 24, picture: 'https://www.calvettimeats.com/wp-content/uploads/2016/12/Black-Angus-Beef-Ribeye-Steak-12-oz-1024x684.jpg' },
+    { name: 'Lamb Shank', active: true, price: 10, quantity: 4, YUMYUM: 20, picture: 'https://www.ibreatheimhungry.com/wp-content/uploads/2019/04/IPlambshanks3.jpg' },
+    { name: '6oz Sirloin', active: false, price: 11, quantity: 0, YUMYUM: 22, picture: 'https://cdn.shopify.com/s/files/1/1727/0315/products/Sirloin_steak-1.jpg?v=1484941276' }
   ],
   resStats: { totalMeals: 1293, revenue: 7889.23, turtles: 539, YUMYUM: 8867 }
 });
 
-const restaurantData = [restaurant1, restaurant2, restaurant3];
+const restaurant4 = new RestaurantDB({
+  resId: 4,
+  resName: 'Taco Bell',
+  resActive: true,
+  resContact: {email: 'TacoBell@tomtom.com', phone: '675-987-0009'},
+  resAddress: '710 3rd St, San Francisco, CA 94107',
+  resLocation: [37.784736, -122.400133],
+  transHist: [  ],
+  resMeals: [
+    { name: 'Dorito Loco Taco', active: false, price: 1.50, quantity: 0, YUMYUM: 3, picture: 'https://s.yimg.com/uu/api/res/1.2/nesCaW5ZydNeFQpdT1jxOg--~B/aD0yNTkxO3c9MzM0NDtzbT0xO2FwcGlkPXl0YWNoeW9u/http://globalfinance.zenfs.com/images/US_AHTTP_AP_HEADLINES_BUSINESS/f8cc6e9613ac470b0d0f6a706700c314_original.jpg' },
+    { name: 'Crunchwrap Supreme', active: false, price: 2, quantity: 0, YUMYUM: 4, picture: 'https://www.tacobell.com/images/22362_crunchwrap_supreme_269x269.jpg' },
+  ],
+  resStats: { totalMeals: 1293, revenue: 7889.23, turtles: 539, YUMYUM: 8867 }
+});
+
+const restaurantData = [restaurant1, restaurant2, restaurant3, restaurant4];
 
 RestaurantDB.insertMany(
   restaurantData, (error, data) => {
