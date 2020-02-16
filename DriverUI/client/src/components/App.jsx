@@ -1,26 +1,14 @@
 import React from 'react';
-import Queue from './queue.jsx';
+import Orders from './Orders.jsx';
 import key from '../../../config.js';
-import sampleData from './orders.js';
-
-const data = [
-  {
-    x: 37.787322, 
-    y: -122.396509
-  },
-  {
-    x: 37.790343,
-    y: -122.402202
-  }
-]
+import axios from 'axios';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
         map : {},
-        restaurantQueue: [],
-        orderQueue: sampleData,
+        orderQueue: []
     }
     this.calculateRoute = this.calculateRoute.bind(this);
     this.addMarkers = this.addMarkers.bind(this);
@@ -40,6 +28,13 @@ class App extends React.Component {
     this.setState({
       map: map
     })
+    axios.get('/driver')
+      .then((response) => {
+        const orders = response.data;
+        this.setState({
+          orderQueue: orders
+        })
+      })
   }
 
   addMarkers (coordinates) {
@@ -55,7 +50,6 @@ class App extends React.Component {
       .go()
       .then((response) => {
         const geojson = response.toGeoJson();
-        console.log(geojson)
         this.state.map.addLayer({
           'id': 'route',
           'type': 'line',
@@ -68,17 +62,19 @@ class App extends React.Component {
               'line-width': 8
           }
         })
+        var bounds = new tt.LngLatBounds();
+        geojson.features[0].geometry.coordinates.forEach(function(point) {
+            bounds.extend(tt.LngLat.convert(point));
+        });
+        this.state.map.fitBounds(bounds, { duration: 0, padding: 50 });
       })
   }
 
   render () {
-    console.log(`${data[0].x},${data[0].y}:${data[1].x},${data[1].y}`)
     return (
         <div id="main">
-          {this.state.orderQueue.map((order, i) => (
-            <Queue key={i} order={order} setNext={this.addMarkers}/>
-          ))}
-          <button onClick={() => this.calculateRoute('-122.396509,37.787322:-122.402202,37.790343')}>Get Next Route</button>
+          <button id="nextOrders" onClick={() => this.calculateRoute('-122.396509,37.787322:-122.402202,37.790343')}>Get Next Route</button>
+          <Orders orders={this.state.orderQueue}/>
         </div>
     )
   }

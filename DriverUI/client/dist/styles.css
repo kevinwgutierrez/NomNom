@@ -6,3 +6,9 @@
 body {
     text-align: center;
 }
+
+#nextOrders {
+    margin-top: 10px;
+    height: 25px;
+    width: 100px;
+}
