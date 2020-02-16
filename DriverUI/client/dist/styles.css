@@ -13,6 +13,11 @@ body {
     background-color: #fff;
 }
 
+#current_order {
+    border: 1px solid rgb(39, 12, 16);
+    border-radius: 60px;
+}
+
 #nextOrders {
     margin-top: 10px;
     font-family: 'Ubuntu', sans-serif;
@@ -39,11 +44,17 @@ h6 {
     padding: 15px;
 }
 
+.entry {
+    margin-top: 10px;
+}
+
 h4 {
+    margin-top: 10px;
     margin-bottom: 0px;
 }
 h6 {
     margin-top: 0px;
+    margin-bottom: 0px;
 }
   
 #pickups_and_orders {
@@ -60,6 +71,7 @@ h6 {
     border: 10px solid #666666;
     border-radius: 80px 80px / 25px 25px 25px 25px;
     box-shadow: 0 0 10px 0 rgba(0,0,0,.2);
+    padding: 10px;
 }
 
 #orders {

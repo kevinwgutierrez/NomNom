@@ -6,7 +6,7 @@ const Orders = (props) => {
     <div className='orders-container'>
       <h5>Active Orders</h5>
       <div id="pickups_container">
-        {props.orders.map((order, i) => <Order key={i} order={order}/>)}
+        {props.orders.map((order, i) => <Order key={i} order={order} item={i} counter={props.counter}/>)}
       </div>
     </div>
   )

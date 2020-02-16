@@ -6,7 +6,7 @@ const Pickups = (props) => {
     <div className='orders-container'>
       <h5>Active Pickups</h5>
       <div id="pickups_container">
-        {props.pickups.map((order, i) => <Pickup key={i} order={order}/>)}
+        {props.pickups.map((order, i) => <Pickup key={i} order={order} item={i} counter={props.counter}/>)}
       </div>
     </div>
   )
