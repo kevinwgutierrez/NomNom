@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const controller = require('../../Database/controller');
+const controller = require('../../Database/controller.js');
 
 // Route user GET order request from driver endpoint
 router.get('/driver', controller.driver.get);

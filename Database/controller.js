@@ -1,6 +1,6 @@
-const { RestaurantDB } = './index';
-const { UserDB } = './index';
-const { OrderDB } = './index';
+const { RestaurantDB } = require('./index');
+const { UserDB } = require('./index');
+const { OrderDB } = require('./index');
 
 module.exports = {
   user: {
