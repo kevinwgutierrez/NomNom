@@ -1,20 +1,9 @@
 import React from 'react';
 
-class Queue extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            current: null
-        }
-    }
-    
-    render () {
-        return (
-            <div id="queue">
-              This is the queue component
-            </div>
-        )
-    }
-}
+const Queue = (props) => (
+    <button className="queueItem" onClick={() => props.setNext(props.order.coords)}>
+      {props.order.orderId} : {props.order.orderUser}
+    </button>
+)
 
 export default Queue;
