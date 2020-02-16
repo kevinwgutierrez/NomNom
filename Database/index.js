@@ -44,7 +44,8 @@ const orderSchema = mongoose.Schema({
   orderRestaurant: String,
   orderRestaurantAddress: String,
   resLocation: [Number, Number],
-  order: [{meal: String, quantity: Number, price: Number}]
+  order: [{meal: String, quantity: Number, price: Number}],
+  route: String,
 });
 
 
