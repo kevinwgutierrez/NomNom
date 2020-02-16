@@ -19,7 +19,7 @@ const restaurantSchema = mongoose.Schema({
   resAddress: String,
   resLocation: [Number, Number],
   transHist: [{ meal: String, customer: String, status: String, quantity: Number }],
-  resMeals: [{ name: String, active: Boolean, price: Number, quantity: Number, YUMYUM: Number, picture: String }],
+  resMeals: [{ resId: Number, resName: String, resAddress: String, name: String, active: Boolean, price: Number, quantity: Number, YUMYUM: Number, picture: String }],
   resStats: { totalMeals: Number, revenue: Number, turtles: Number, YUMYUM: Number }
 });
 
