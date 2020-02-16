@@ -4,7 +4,6 @@ import CheckoutModal from './cards/CheckoutModal.jsx';
 import Confirmation from './cards/Confirmation.jsx';
 
 import axios from 'axios';
-import sampleRestaurantData from '../sampleRestaurantData.js';
 
 class App extends Component {
   constructor(props) {
@@ -35,7 +34,6 @@ class App extends Component {
         restaurantData.forEach(restaurant => {
           restaurant.resMeals.forEach(meal => {
             if (meal.active) {
-              console.log(meal);
               meals.push(meal);
             }
           });
@@ -47,6 +45,29 @@ class App extends Component {
       .catch((err) => {
         console.log('error');
       });
+  }
+
+  postOrder() {
+    const { selectedMeal, quantity } = this.state;
+    const { resName, resAddress, resLocation, name, price } = selectedMeal;
+    axios.post('/user', {
+      orderId: 5,
+      orderUser: 'Zack',
+      orderUserAddress: '501 Liberty St, San Francisco CA 94114',
+      userLocation: [37.777884, -122.454502],
+      orderUserContact: {email: 'zack@tomtom.com', phone: '650-555-8080'},
+      orderRestaurant: resName,
+      orderRestaurantAddress: resAddress,
+      resLocation: [37.784735, -122.400134],
+      order: [{meal: name, quantity: quantity, price: price}],
+      route: '-122.400133,37.784736:-122.454501,37.777885',
+    })
+      .then(()=> {
+        console.log("Order received!")
+      })
+      .catch((err) => {
+        console.log('error')
+      })
   }
 
   toggleModal(meal) {
@@ -78,7 +99,8 @@ class App extends Component {
     console.log(value);
     this.setState({
       quantity: value
-    })
+    });
+    this.postOrder();
     this.toggleModal();
     this.toggleConfirmation();
   }
