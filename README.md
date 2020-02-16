@@ -19,9 +19,9 @@ GET: /user - get user's order
 POST: /user - create new order
 
 #### Restaurant
-GET: /restaurant
+GET: /restaurant - get restaurant information
 
-POST: /restaurant
+PATCH: /restaurant - activate order
 
 
 
