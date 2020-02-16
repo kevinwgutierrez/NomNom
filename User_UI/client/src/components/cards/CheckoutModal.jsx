@@ -6,11 +6,9 @@ const modalroot = document.getElementById('modalroot');
 class CheckoutModal extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       quantity: 1,
     }
-
     this.handleChange = this.handleChange.bind(this);
   }
 
