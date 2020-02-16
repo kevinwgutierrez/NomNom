@@ -13,7 +13,7 @@ function Meal(props) {
         Quantity: {props.meal.quantity}
       </div>
       <div className="meal-activity">
-        Active? {props.meal.active ? 'Yes' : 'No'}
+        {props.meal.active ? 'Active' : 'Not Active'}
       </div>
     </div>
   );

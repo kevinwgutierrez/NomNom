@@ -3,6 +3,7 @@ import axios from 'axios';
 import Statistics from './statistics.jsx';
 import TransHist from './transHist.jsx';
 import Meals from './meals.jsx';
+import ActiveMeals from './activeMeals.jsx';
 
 
 class App extends React.Component {
@@ -13,7 +14,7 @@ class App extends React.Component {
       stats: {},
       transHist: [],
       meals: [],
-      activeMeals: {}
+      activeMeals: []
     }
 
     this.fetch = this.fetch.bind(this);
@@ -55,8 +56,9 @@ class App extends React.Component {
         <div className="restaurant-meals-container">
           <Meals meals={this.state.meals}/>
         </div>
+        <button>Add Meal</button>
         <div className="active-meals-container">
-
+          <ActiveMeals activeMeals={this.state.activeMeals}/>
         </div>
       </div>
     )
