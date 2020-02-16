@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Statistics from './statistics.jsx';
 import TransHist from './transHist.jsx';
+import Meals from './meals.jsx';
 
 
 class App extends React.Component {
@@ -11,7 +12,7 @@ class App extends React.Component {
       data: {},
       stats: {},
       transHist: [],
-      meals: {},
+      meals: [],
       activeMeals: {}
     }
 
@@ -52,7 +53,7 @@ class App extends React.Component {
           <TransHist transHist={this.state.transHist}/>
         </div>
         <div className="restaurant-meals-container">
-
+          <Meals meals={this.state.meals}/>
         </div>
         <div className="active-meals-container">
 
