@@ -8,7 +8,8 @@ class App extends React.Component {
     super(props);
     this.state = {
         map : {},
-        orderQueue: []
+        orderQueue: [],
+        current: null
     }
     this.calculateRoute = this.calculateRoute.bind(this);
     this.addMarkers = this.addMarkers.bind(this);
@@ -32,13 +33,16 @@ class App extends React.Component {
       .then((response) => {
         const orders = response.data;
         this.setState({
-          orderQueue: orders
+          orderQueue: orders,
+          current: orders[0]
         })
       })
   }
 
   addMarkers (coordinates) {
-    new tt.Marker().setLngLat([coordinates[0], coordinates[1]]).addTo(this.state.map);
+    coordinates.forEach(item => {
+      new tt.Marker().setLngLat([item[1], item[0]]).addTo(this.state.map);
+    })
   }
 
   calculateRoute (coordinates) {
@@ -62,6 +66,9 @@ class App extends React.Component {
               'line-width': 8
           }
         })
+        console.log(this.state.current.userLocation);
+        this.addMarkers([this.state.current.userLocation, this.state.current.resLocation]);
+
         var bounds = new tt.LngLatBounds();
         geojson.features[0].geometry.coordinates.forEach(function(point) {
             bounds.extend(tt.LngLat.convert(point));
@@ -72,10 +79,10 @@ class App extends React.Component {
 
   render () {
     return (
-        <div id="main">
-          <button id="nextOrders" onClick={() => this.calculateRoute('-122.396509,37.787322:-122.402202,37.790343')}>Get Next Route</button>
-          <Orders orders={this.state.orderQueue}/>
-        </div>
+      <div id="main">
+        <button id="nextOrders" onClick={() => this.calculateRoute('-122.396509,37.787322:-122.402202,37.790343')}>Get Next Route</button>
+        <Orders orders={this.state.orderQueue}/>
+      </div>
     )
   }
 }
