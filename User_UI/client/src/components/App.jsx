@@ -3,6 +3,7 @@ import CardList from './cards/CardList.jsx';
 import CheckoutModal from './cards/CheckoutModal.jsx';
 import Confirmation from './cards/Confirmation.jsx';
 
+import axios from 'axios';
 import sampleRestaurantData from '../sampleRestaurantData.js';
 
 class App extends Component {
@@ -15,7 +16,6 @@ class App extends Component {
       orderConfirmed: false,
       selectedMeal: {},
       quantity: 1,
-      restaurants: []
     };
 
     this.toggleModal = this.toggleModal.bind(this);
@@ -28,20 +28,25 @@ class App extends Component {
   }
 
   getMeals() {
-    let restaurantData = sampleRestaurantData.restaurantData;
-    let restaurants = this.state.restaurants;
     let meals = this.state.meals;
-    restaurantData.forEach(restaurant => {
-      restaurant.resMeals.forEach(meal => {
-        if (meal.active) {
-          console.log(meal);
-          meals.push(meal);
-        }
+    axios.get('/user')
+      .then((data) => {
+        let restaurantData = data.data;
+        restaurantData.forEach(restaurant => {
+          restaurant.resMeals.forEach(meal => {
+            if (meal.active) {
+              console.log(meal);
+              meals.push(meal);
+            }
+          });
+        });
+        this.setState({
+          meals: meals
+        });
+      })
+      .catch((err) => {
+        console.log('error');
       });
-    });
-    this.setState({
-      meals: meals
-    });
   }
 
   toggleModal(meal) {

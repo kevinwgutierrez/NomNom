@@ -12,7 +12,13 @@ app.use(parser.urlencoded({extended: true}));
 
 // GET
 app.get('/user', (req, res) => {
-
+  RestaurantDB.find({}, (err, data) => {
+    if (err) {
+      console.log('error');
+    } else {
+      res.status(200).send(data);
+    }
+  })
 });
 
 // POST
