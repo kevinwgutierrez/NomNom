@@ -3,6 +3,17 @@ import Queue from './queue.jsx';
 import key from '../../../config.js';
 import sampleData from './orders.js';
 
+const data = [
+  {
+    x: 37.787322, 
+    y: -122.396509
+  },
+  {
+    x: 37.790343,
+    y: -122.402202
+  }
+]
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -44,6 +55,7 @@ class App extends React.Component {
       .go()
       .then((response) => {
         const geojson = response.toGeoJson();
+        console.log(geojson)
         this.state.map.addLayer({
           'id': 'route',
           'type': 'line',
@@ -60,12 +72,13 @@ class App extends React.Component {
   }
 
   render () {
+    console.log(`${data[0].x},${data[0].y}:${data[1].x},${data[1].y}`)
     return (
         <div id="main">
           {this.state.orderQueue.map((order, i) => (
             <Queue key={i} order={order} setNext={this.addMarkers}/>
           ))}
-          <button onClick={this.calculateRoute('4.8,52.3:4.87,52.37')}>Get Next Route</button>
+          <button onClick={() => this.calculateRoute('-122.396509,37.787322:-122.402202,37.790343')}>Get Next Route</button>
         </div>
     )
   }
