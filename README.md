@@ -18,10 +18,10 @@ GET: /user - get user's order
 
 POST: /user - create new order
 
-#### Business
-GET: /business
+#### Restaurant
+GET: /restaurant
 
-POST: /business
+POST: /restaurant
 
 
 
