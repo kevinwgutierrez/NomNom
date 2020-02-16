@@ -9,19 +9,19 @@ CRUD
 ### ORDERS
 
 #### Driver
-GET: /order/driver - get all orders
+GET: /driver - get all orders
 
-PATCH: /order/driver - toggle enroute / picked up / completed
+PATCH: /driver - toggle enroute / picked up / completed
 
 #### User
-GET: /order/user - get user's order
+GET: /user - get user's order
 
-POST: /order/user - create new order
+POST: /user - create new order
 
 #### Business
-GET: /order/business
+GET: /business
 
-POST: /order/business
+POST: /business
 
 
 
