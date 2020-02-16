@@ -3,7 +3,6 @@ const path = require('path');
 const app = express();
 const parser = require('body-parser');
 const PORT = 3000;
-const router = require('./router');
 const { OrderDB } = require('../../Database/index.js');
 const { UserDB } = require('../../Database/index.js');
 const { RestaurantDB } = require('../../Database/index.js');
