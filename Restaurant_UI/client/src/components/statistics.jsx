@@ -1,7 +1,6 @@
 import React from 'react';
 
 function Statistics(props) {
-  console.log(props.stats);
   return(
     <div className="stats-wrapper">
       <div className="totalmeals-wrapper">

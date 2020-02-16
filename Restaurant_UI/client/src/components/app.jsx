@@ -1,14 +1,16 @@
 import React from 'react';
 import axios from 'axios';
 import Statistics from './statistics.jsx';
+import TransHist from './transHist.jsx';
 
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      data: {},
       stats: {},
-      transHist: {},
+      transHist: [],
       meals: {},
       activeMeals: {}
     }
@@ -21,6 +23,7 @@ class App extends React.Component {
       .then((response) => {
         let data = response.data;
         this.setState({
+            data: data,
             stats: data.resStats,
             transHist: data.transHist,
             meals: data.resMeals
@@ -37,12 +40,16 @@ class App extends React.Component {
 
   render() {
     return (
-      <div id="main">
+      <div id="restaurant-main">
+        <h1 className="restaurant-name">
+          {this.state.data.resName}
+        </h1>
+        
         <div className="stats-container">
           <Statistics stats={this.state.stats}/>
         </div>
         <div className="trans-history-container">
-
+          <TransHist transHist={this.state.transHist}/>
         </div>
         <div className="restaurant-meals-container">
 
