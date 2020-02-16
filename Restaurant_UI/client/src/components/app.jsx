@@ -36,6 +36,10 @@ class App extends React.Component {
       })
   }
 
+  // patch() {
+  //   axios.patch('/restaurant',)
+  // }
+
   componentDidMount() {
     this.fetch();
   }
@@ -56,7 +60,6 @@ class App extends React.Component {
         <div className="restaurant-meals-container">
           <Meals meals={this.state.meals}/>
         </div>
-        <button>Add Meal</button>
         <div className="active-meals-container">
           <ActiveMeals activeMeals={this.state.activeMeals}/>
         </div>
